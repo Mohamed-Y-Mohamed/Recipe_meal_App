@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from './pages/About'; // Example additional page
-import withLoader from './components/withLoader'; // Adjust the path if needed
+import About from './pages/About';
+import withLoader from './components/withLoader';
 import NavBar from './components/NavBar';
 import Footer from './components/footer';
 import Contactus from './pages/contactus';
 import Home from './pages/homepage';
+import Profile from './pages/profile';
+import Chat from './pages/Chat';
+import Signin from './pages/Signin';
+import Signup from './pages/signup';
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -24,13 +28,16 @@ function App() {
             <Route path="/contactus" element={withLoader(Contactus)()} />
             <Route path="/home" element={withLoader(Home)()} />
             <Route path="/about" element={withLoader(About)()} />
+            <Route path="/profile" element={withLoader(Profile)()} />
+            <Route path="/Chat" element={withLoader(Chat)()} />
+            <Route path="/Signin" element={withLoader(Signin)()} />
+            <Route path="/Signup" element={withLoader(Signup)()} />
 
-            {/* Add other routes as needed */}
           </Routes>
         </div>
       </div>
-      <div style={{ marginTop: "8%" }}>
-        <Footer /></div>
+      <Footer />
+
     </Router>
   );
 }

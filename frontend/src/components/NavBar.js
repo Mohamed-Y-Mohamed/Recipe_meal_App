@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faCircleInfo, faUtensils, faHome, faCommentAlt, faSignOutAlt, faChevronDown, faUser, faEdit, faUsers, faComments } from '@fortawesome/free-solid-svg-icons';
-
+import { faBars, faTimes, faCircleInfo, faRightToBracket, faUtensils, faHome, faCommentAlt, faSignOutAlt, faChevronDown, faUser, faEdit, faUsers, faComments } from '@fortawesome/free-solid-svg-icons';
 function NavBar({ isSidebarOpen, toggleSidebar }) {
     const [isChatboxOpen, setIsChatboxOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -41,7 +40,7 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
                         </span>
                     )}
                     <div className="text-gray-100 text-xl relative mt-12">
-                        <h1 className={`font-bold text-gray-200 text-[15px] mt-1 ml-3 ${isSidebarOpen ? 'block' : 'hidden'}`}>TailwindCSS</h1>
+                        <h1 className={`font-bold text-gray-200 text-[15px] mt-1 ml-3 ${isSidebarOpen ? 'block' : 'hidden'}`}>Flavour Fusion</h1>
                     </div>
                     <div className="my-2 bg-gray-600 h-[1px]"></div>
                 </div>
@@ -65,8 +64,6 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
                     <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>About Us</span>
                 </Link>
 
-
-
                 {/* Chatbox section with dropdown functionality */}
                 <div>
                     <div
@@ -82,16 +79,16 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
 
                     {/* Dropdown content for Chatbox */}
                     {isChatboxOpen && (
-                        <Link to="/contactus" className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold">
-                            <div className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                        <div className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold">
+                            <Link to="/contactus" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
                                 <FontAwesomeIcon icon={faUsers} className="text-white text-2xl" />
-                                <span className="ml-3">Our Contact details </span>
-                            </div>
-                            <div className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                                <span className="ml-3">Our Contact details</span>
+                            </Link>
+                            <Link to="/Chat" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
                                 <FontAwesomeIcon icon={faComments} className="text-white text-2xl" />
-                                <span className="ml-3">Life Chat</span>
-                            </div>
-                        </Link>
+                                <span className="ml-3">Live Chat</span>
+                            </Link>
+                        </div>
                     )}
                 </div>
                 <div className="my-4 bg-gray-600 h-[1px]"></div>
@@ -112,14 +109,14 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
                     {/* Dropdown content for Settings */}
                     {isSettingsOpen && (
                         <div className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold">
-                            <div className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                            <Link to="/profile" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
                                 <FontAwesomeIcon icon={faUser} className="text-white text-2xl" />
-                                <span className="ml-3">View Profile</span>
-                            </div>
-                            <div className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                                <span className="ml-3">View and Edit Profile</span>
+                            </Link>
+                            <Link to="/blank" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
                                 <FontAwesomeIcon icon={faEdit} className="text-white text-2xl" />
-                                <span className="ml-3">Edit Profile</span>
-                            </div>
+                                <span className="ml-3">Something</span>
+                            </Link>
                         </div>
                     )}
                 </div>
@@ -127,9 +124,12 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
 
                 {/* Logout Link */}
                 <Link to="/logout" className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-                    <FontAwesomeIcon icon={faSignOutAlt} className="text-white text-2xl" />
-                    <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Logout</span>
+                    <FontAwesomeIcon icon={faRightToBracket} className="text-white text-2xl" />
+                    <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Signin/Register</span>
                 </Link>
+
+
+
 
             </div>
         </div>
@@ -137,3 +137,16 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
 }
 
 export default NavBar;
+
+
+
+
+
+//signout code
+/*
+  <Link to="/logout" className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                    <FontAwesomeIcon icon={faSignOutAlt} className="text-white text-2xl" />
+                    <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Logout</span>
+                </Link>
+
+*/

@@ -3,7 +3,7 @@ function Contactus() {
         <section class="bg-gray-100">
             <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:py-20 lg:px-8">
                 <div class="max-w-2xl lg:max-w-4xl mx-auto text-center">
-                    <h2 class="text-3xl font-extrabold text-gray-900" id="contactUs">Visit Our Location</h2>
+                    <h2 class="text-3xl font-extrabold text-gray-900" id="contactUs">Contact us</h2>
                     <p class="mt-3 text-lg text-gray-500">Let us serve you the best</p>
                 </div>
                 <div class="mt-8 lg:mt-20">
@@ -18,7 +18,6 @@ function Contactus() {
                                         <div class="flex-shrink-0">
                                             <div
                                                 class="flex items-center justify-between h-10 w-30 rounded-md bg-indigo-500 text-white p-2">
-                                                {/* <!-- Heroicon name: phone --> */}
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -32,7 +31,7 @@ function Contactus() {
                                 </div>
                                 <div class="px-6 py-4">
                                     <h3 class="text-lg font-medium text-gray-900">Our Address</h3>
-                                    <p class="mt-1 text-gray-600">Sale galli, 60 foot road, Latur</p>
+                                    <p class="mt-1 text-gray-600">im too broke to have office. deal with it</p>
                                 </div>
                                 <div class="border-t border-gray-200 px-6 py-4">
                                     <h3 class="text-lg font-medium text-gray-900">Hours</h3>
