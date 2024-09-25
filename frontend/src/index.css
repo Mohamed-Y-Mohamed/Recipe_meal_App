@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.close-btn {
+    position: absolute;
+    top: -10px;
+    /* Ensure it's visible near the top */
+    left: 20px;
+    /* Position it away from the left side */
+    font-size: 30px;
+    /* Make the 'X' icon larger */
+    padding: 10px;
+    /* Increase the clickable area around the 'X' */
+    cursor: pointer;
+    z-index: 100;
+    /* Ensure it is on top of all other elements */
+}
+
+@media only screen and (max-width: 800px) {
+    .close-btn {
+        position: absolute;
+        top: -10px;
+        /* Ensure it's visible near the top */
+        left: 20px;
+        /* Position it away from the left side */
+        font-size: 30px;
+        /* Make the 'X' icon larger */
+        padding: 10px;
+        /* Increase the clickable area around the 'X' */
+        cursor: pointer;
+        z-index: 100;
+        /* Ensure it is on top of all other elements */
+    }
+}
