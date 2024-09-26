@@ -33,7 +33,7 @@ const MealDetails = () => {
     }
 
     return (
-        <div className="p-4">
+        <div className="p-4" style={{ paddingBottom: "5vh" }}>
             {/* Back Button */}
             <div className="mb-4">
                 <button onClick={goBack} className="flex items-center text-blue-500 hover:text-blue-700">

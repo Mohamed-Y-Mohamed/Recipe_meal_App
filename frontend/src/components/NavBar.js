@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faBars,
@@ -20,6 +20,16 @@ import {
 function NavBar({ isSidebarOpen, toggleSidebar }) {
     const [isChatboxOpen, setIsChatboxOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Track if the user is logged in
+    const navigate = useNavigate(); // To navigate after signout
+
+    // Check if a token exists in sessionStorage
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (token) {
+            setIsLoggedIn(true); // Set logged in state to true
+        }
+    }, []);
 
     const toggleChatbox = () => {
         if (isSidebarOpen) {
@@ -31,6 +41,14 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
         if (isSidebarOpen) {
             setIsSettingsOpen(!isSettingsOpen);
         }
+    };
+
+    // Handle signout
+    const handleSignout = () => {
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('customerId');
+        setIsLoggedIn(false); // Set logged out state
+        navigate('/'); // Navigate to home after signout
     };
 
     return (
@@ -79,7 +97,7 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
 
                 {/* Recipes Link */}
                 <Link
-                    to="/RecipeMeals"
+                    to="/recipes"
                     className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
                 >
                     <FontAwesomeIcon icon={faUtensils} className="text-white text-2xl" />
@@ -101,87 +119,99 @@ function NavBar({ isSidebarOpen, toggleSidebar }) {
                 </Link>
 
                 {/* Chatbox section with dropdown functionality */}
-                <div>
-                    <div
-                        className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ${!isSidebarOpen && 'pointer-events-none'
-                            }`}
-                        onClick={toggleChatbox}
-                    >
-                        <FontAwesomeIcon icon={faCommentAlt} className="text-white text-2xl" />
-                        <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Chatbox</span>
-                        {isSidebarOpen && (
-                            <span className="text-sm ml-auto">
-                                <FontAwesomeIcon
-                                    icon={faChevronDown}
-                                    style={{ marginLeft: '5px' }}
-                                    className={`text-white text-2xl ${isChatboxOpen ? 'transform rotate-180' : ''}`}
-                                />
-                            </span>
-                        )}
-                    </div>
-
-                    {/* Dropdown content for Chatbox */}
-                    {isSidebarOpen && isChatboxOpen && (
-                        <div className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold">
-                            <Link to="/contactus" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
-                                <FontAwesomeIcon icon={faUsers} className="text-white text-2xl" />
-                                <span className="ml-3">Our Contact details</span>
-                            </Link>
-                            <Link to="/Chat" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
-                                <FontAwesomeIcon icon={faComments} className="text-white text-2xl" />
-                                <span className="ml-3">Live Chat</span>
-                            </Link>
+                {isLoggedIn && (
+                    <>
+                        <div
+                            className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ${!isSidebarOpen && 'pointer-events-none'}`}
+                            onClick={toggleChatbox}
+                        >
+                            <FontAwesomeIcon icon={faCommentAlt} className="text-white text-2xl" />
+                            <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Chatbox</span>
+                            {isSidebarOpen && (
+                                <span className="text-sm ml-auto">
+                                    <FontAwesomeIcon
+                                        icon={faChevronDown}
+                                        style={{ marginLeft: '5px' }}
+                                        className={`text-white text-2xl ${isChatboxOpen ? 'transform rotate-180' : ''}`}
+                                    />
+                                </span>
+                            )}
                         </div>
-                    )}
-                </div>
-                <div className="my-4 bg-gray-600 h-[1px]"></div>
+
+                        {/* Dropdown content for Chatbox */}
+                        {isSidebarOpen && isChatboxOpen && (
+                            <div className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold">
+                                <Link to="/contactus" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                                    <FontAwesomeIcon icon={faUsers} className="text-white text-2xl" />
+                                    <span className="ml-3">Our Contact details</span>
+                                </Link>
+                                <Link to="/Chat" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                                    <FontAwesomeIcon icon={faComments} className="text-white text-2xl" />
+                                    <span className="ml-3">Live Chat</span>
+                                </Link>
+                            </div>
+                        )}
+                        <div className="my-4 bg-gray-600 h-[1px]"></div>
+                    </>
+                )}
 
                 {/* Settings section with dropdown functionality */}
-                <div>
-                    <div
-                        className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ${!isSidebarOpen && 'pointer-events-none'
-                            }`}
-                        onClick={toggleSettings}
-                    >
-                        <FontAwesomeIcon icon={faUser} className="text-white text-2xl" />
-                        <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Settings</span>
-                        {isSidebarOpen && (
-                            <span className="text-sm ml-auto">
-                                <FontAwesomeIcon
-                                    icon={faChevronDown}
-                                    style={{ marginLeft: '5px' }}
-                                    className={`text-white text-2xl ${isSettingsOpen ? 'transform rotate-180' : ''}`}
-                                />
-                            </span>
-                        )}
-                    </div>
-
-                    {/* Dropdown content for Settings */}
-                    {isSidebarOpen && isSettingsOpen && (
-                        <div className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold">
-                            <Link to="/profile" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
-                                <FontAwesomeIcon icon={faUser} className="text-white text-2xl" />
-                                <span className="ml-3">View and Edit Profile</span>
-                            </Link>
-                            <Link to="/blank" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
-                                <FontAwesomeIcon icon={faEdit} className="text-white text-2xl" />
-                                <span className="ml-3">Something</span>
-                            </Link>
+                {isLoggedIn && (
+                    <>
+                        <div
+                            className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ${!isSidebarOpen && 'pointer-events-none'}`}
+                            onClick={toggleSettings}
+                        >
+                            <FontAwesomeIcon icon={faUser} className="text-white text-2xl" />
+                            <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Settings</span>
+                            {isSidebarOpen && (
+                                <span className="text-sm ml-auto">
+                                    <FontAwesomeIcon
+                                        icon={faChevronDown}
+                                        style={{ marginLeft: '5px' }}
+                                        className={`text-white text-2xl ${isSettingsOpen ? 'transform rotate-180' : ''}`}
+                                    />
+                                </span>
+                            )}
                         </div>
-                    )}
-                </div>
-                <div className="my-4 bg-gray-600 h-[1px]"></div>
 
-                {/* Logout Link */}
-                <Link
-                    to="/logout"
-                    className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-                >
-                    <FontAwesomeIcon icon={faRightToBracket} className="text-white text-2xl" />
-                    <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>
-                        Signin/Register
-                    </span>
-                </Link>
+                        {/* Dropdown content for Settings */}
+                        {isSidebarOpen && isSettingsOpen && (
+                            <div className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold">
+                                <Link to="/profile" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                                    <FontAwesomeIcon icon={faUser} className="text-white text-2xl" />
+                                    <span className="ml-3">View and Edit Profile</span>
+                                </Link>
+                                <Link to="/FavoriteMeals" className="flex items-center cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
+                                    <FontAwesomeIcon icon={faEdit} className="text-white text-2xl" />
+                                    <span className="ml-3">Liked Meals</span>
+                                </Link>
+                            </div>
+                        )}
+                        <div className="my-4 bg-gray-600 h-[1px]"></div>
+                    </>
+                )}
+
+                {/* Conditionally render Signin/Signout based on login state */}
+                {isLoggedIn ? (
+                    <div
+                        className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+                        onClick={handleSignout}
+                    >
+                        <FontAwesomeIcon icon={faSignOutAlt} className="text-white text-2xl" />
+                        <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>Signout</span>
+                    </div>
+                ) : (
+                    <Link
+                        to="/Signup"
+                        className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+                    >
+                        <FontAwesomeIcon icon={faRightToBracket} className="text-white text-2xl" />
+                        <span className={`text-[15px] ml-4 text-gray-200 font-bold ${isSidebarOpen ? 'block' : 'hidden'}`}>
+                            Signin/Register
+                        </span>
+                    </Link>
+                )}
             </div>
         </div>
     );

@@ -64,8 +64,7 @@ const Signup = () => {
         setConfirmPasswordError('');
         return true;
     };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const isFullNameValid = validateFullName();
@@ -74,13 +73,33 @@ const Signup = () => {
         const isConfirmPasswordValid = validateConfirmPassword();
 
         if (isFullNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
-            // Simulating form submission success
-            setSuccessMessage('Signup successful!');
-            // Reset form fields
-            setFullName('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
+            try {
+                const response = await fetch('http://localhost:5000/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fullName,
+                        email,
+                        password,
+                    }),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    setSuccessMessage(result.message);
+                    setFullName('');
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
+                } else {
+                    const error = await response.json();
+                    console.error('Signup failed:', error.message);
+                }
+            } catch (error) {
+                console.error('Error during signup:', error);
+            }
         }
     };
 

@@ -13,6 +13,7 @@ import Signin from './pages/Signin';
 import Signup from './pages/signup';
 import RecipeMeals from './pages/meal';
 import MealDetails from './pages/DetailMeal';
+import FavoriteMeals from './pages/favouriteMeal';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -35,7 +36,8 @@ function App() {
             <Route path="/Chat" element={withLoader(Chat)()} />
             <Route path="/Signin" element={withLoader(Signin)()} />
             <Route path="/Signup" element={withLoader(Signup)()} />
-            <Route path="/RecipeMeals" element={withLoader(RecipeMeals)()} />
+            <Route path="/recipes" element={<RecipeMeals />} />
+            <Route path="/FavoriteMeals" element={<FavoriteMeals />} />
 
             {/* Update the MealDetails route to include the dynamic idMeal */}
             <Route path="/MealDetails/:idMeal" element={withLoader(MealDetails)()} />

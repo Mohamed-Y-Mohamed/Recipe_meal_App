@@ -19,9 +19,10 @@ const Hero = () => {
                                 <p className="leading-normal text-2xl mb-8">
                                     Discover easy-to-follow recipes for every occasion. Join our community of food enthusiasts!
                                 </p>
-                                <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                    Join Now
-                                </button>
+                                <a href="/Signin" style={{ zIndex: "5" }}>
+                                    <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                        Join Now
+                                    </button></a>
                             </div>
                             <div className="w-full md:w-3/5 py-6 text-center">
                             </div>

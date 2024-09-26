@@ -93,9 +93,10 @@ const Home = () => {
                             </div>
                             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                                 <div class="flex items-center justify-start">
-                                    <button class="mx-auto lg:mx-0 hover:underline gradient text-black font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                        Get Started
-                                    </button>
+                                    <a href="https://www.youtube.com/watch?v=Jj1fhYZJjek" target="blank">
+                                        <button class="mx-auto lg:mx-0 hover:underline gradient text-black font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                            Get Started
+                                        </button></a>
                                 </div>
                             </div>
                         </div>
@@ -122,9 +123,10 @@ const Home = () => {
                             </div>
                             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                                 <div class="flex items-center justify-center">
-                                    <button class="mx-auto lg:mx-0 hover:underline gradient text-black font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                        Explore Recipes
-                                    </button>
+                                    <a href="/recipes">
+                                        <button class="mx-auto lg:mx-0 hover:underline gradient text-black font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                            Explore Recipes
+                                        </button></a>
                                 </div>
                             </div>
                         </div>
@@ -151,9 +153,10 @@ const Home = () => {
                             </div>
                             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                                 <div class="flex items-center justify-end">
-                                    <button class="mx-auto lg:mx-0 hover:underline gradient text-black font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                        Join Community
-                                    </button>
+                                    <a href="https://thehiveindex.com/topics/cooking/">
+                                        <button class="mx-auto lg:mx-0 hover:underline gradient text-black font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                            Join Community
+                                        </button></a>
                                 </div>
                             </div>
                         </div>
