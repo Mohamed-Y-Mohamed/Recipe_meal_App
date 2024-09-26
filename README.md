@@ -50,6 +50,12 @@ Flavour Fusion is a full-stack web application that allows users to explore, lik
    ```bash
    git clone https://github.com/yourusername/flavour-fusion.git
    cd flavour-fusion/backend
+## **Installation**
+
+### **Backend Setup**
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
 Install dependencies:
 bash
 Copy code
@@ -95,3 +101,7 @@ Backend Structure
 Express Server: Handles routing and API logic for authentication, profile management, and interactions with MongoDB.
 JWT Authentication: Secures protected routes such as liking/unliking meals and updating the profile.
 MongoDB Integration: User data, including profile information and liked meals, is stored in MongoDB.
+vbnet
+Copy code
+
+This version ensures that everything is properly formatted and aligned with t
